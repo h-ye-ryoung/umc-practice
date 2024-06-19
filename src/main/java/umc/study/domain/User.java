@@ -6,7 +6,7 @@ import umc.study.domain.common.BaseEntity;
 import umc.study.domain.enums.Gender;
 import umc.study.domain.enums.UserStatus;
 import umc.study.domain.enums.SocialType;
-import umc.study.domain.mapping.UserChoicePrefer;
+import umc.study.domain.mapping.UserFoodPrefer;
 import umc.study.domain.mapping.UserMission;
 import umc.study.domain.mapping.UserSignupAgree;
 
@@ -47,14 +47,14 @@ public class User extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @Column(nullable = false, length = 50)
+    // @Column(nullable = false, length = 50)
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserSignupAgree> userSignupAgreeList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserChoicePrefer> userChoicePreferList = new ArrayList<>();
+    private List<UserFoodPrefer> userFoodPreferList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
@@ -64,4 +64,5 @@ public class User extends BaseEntity {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserPoint userPoint;
+
 }

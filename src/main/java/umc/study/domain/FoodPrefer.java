@@ -17,4 +17,9 @@ public class FoodPrefer extends BaseEntity {
 
     @Column(nullable = false, length = 15)
     private String prefer_name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
