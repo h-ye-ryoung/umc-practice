@@ -8,6 +8,8 @@ import lombok.Getter;
 public class ReviewRequestDTO {
     @Getter
     public static class JoinDto {
+
+
         @NotBlank
         private String body;
 

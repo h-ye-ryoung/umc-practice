@@ -19,14 +19,13 @@ import umc.study.web.dto.ReviewResponseDTO;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/stores/")
-public class ReviewRestController {
-    private final ReviewCommandService reviewCommandService;
+public class MissionRestController {
+    private final MissionCommandService missionCommandService;
 
-    @PostMapping("/{storeId}/reviews")
-    public ApiResponse<ReviewResponseDTO.JoinResultDTO> join(@RequestBody @Valid ReviewRequestDTO.JoinDto request,
-                                                             @PathVariable @ExistStores Long storeId){
+    @PostMapping("/missions")
+    public ApiResponse<MissionResponseDTO.JoinResultDTO> join(@RequestBody @Valid MissionRequestDTO.JoinDto request){
 
-        Review review = reviewCommandService.joinReview(request, storeId);
-        return ApiResponse.onSuccess(ReviewConverter.toJoinResultDTO(review));
+        Mission mission = missionCommandService.joinMission(request);
+        return ApiResponse.onSuccess(MissionConverter.toJoinResultDTO(mission));
     }
 }

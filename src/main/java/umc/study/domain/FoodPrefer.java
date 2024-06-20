@@ -2,9 +2,13 @@ package umc.study.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.study.domain.common.BaseEntity;
 
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
