@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.apiPayload.code.status.ErrorStatus;
+import umc.study.apiPayload.exception.handler.MissionHandler;
+import umc.study.apiPayload.exception.handler.MissionHandler;
 import umc.study.apiPayload.exception.handler.ReviewHandler;
 import umc.study.apiPayload.exception.handler.StoreHandler;
 import umc.study.converter.MissionConverter;
@@ -32,8 +34,9 @@ public class MissionCommandServiceImpl implements MissionCommandService{
     @Transactional
     public Mission joinMission(MissionRequestDTO.JoinDto request) {
 
+
         Store store = storeRepository.findById(request.getStoreId())
-                .orElseThrow(() -> new ReviewHandler(ErrorStatus.STORE_ID_NOT_FOUND));
+                .orElseThrow(() -> new MissionHandler(ErrorStatus.STORE_ID_NOT_FOUND));
 
 
         Mission newMission = MissionConverter.toMission(request, store);

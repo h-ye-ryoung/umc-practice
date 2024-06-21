@@ -22,6 +22,8 @@ import umc.study.web.dto.ReviewResponseDTO;
 public class ReviewRestController {
     private final ReviewCommandService reviewCommandService;
 
+
+
     @PostMapping("/{storeId}/reviews")
     public ApiResponse<ReviewResponseDTO.JoinResultDTO> join(@RequestBody @Valid ReviewRequestDTO.JoinDto request,
                                                              @PathVariable @ExistStores Long storeId){
@@ -29,4 +31,6 @@ public class ReviewRestController {
         Review review = reviewCommandService.joinReview(request, storeId);
         return ApiResponse.onSuccess(ReviewConverter.toJoinResultDTO(review));
     }
+
+
 }

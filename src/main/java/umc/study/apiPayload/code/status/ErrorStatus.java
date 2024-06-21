@@ -32,8 +32,8 @@ public enum ErrorStatus implements BaseErrorCode {
     //Store
     REGION_ID_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001", "지역 id가 없습니다."),
 
-    //Review
-    STORE_ID_NOT_FOUND(HttpStatus.NOT_FOUND, "REVIEW4001", "리뷰를 달 스토어가 없습니다.");
+    //Review / mission
+    STORE_ID_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4002", "추가하려는 스토어가 없습니다.");
 
 
 

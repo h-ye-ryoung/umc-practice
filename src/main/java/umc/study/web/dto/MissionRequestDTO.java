@@ -14,6 +14,7 @@ public class MissionRequestDTO {
 
         @ExistStores
         private Long storeId;
+
         @NotNull
         private Integer point_reward;
         private LocalDate dead_line;
