@@ -33,7 +33,13 @@ public enum ErrorStatus implements BaseErrorCode {
     REGION_ID_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001", "지역 id가 없습니다."),
 
     //Review / mission
-    STORE_ID_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4002", "추가하려는 스토어가 없습니다.");
+    STORE_ID_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4002", "추가하려는 스토어가 없습니다."),
+
+    //미션이 이미 도전중일 때
+    MISSION_ALREADY_IN_PROGRESS(HttpStatus.BAD_REQUEST, "MISSION4001", "이미 도전 중인 미션입니다."),
+
+    //미션이 존지하지 않을 때
+    MISSION_ID__NOT_FOUND(HttpStatus.BAD_REQUEST, "MISSION4002", "존재하지 않는 미션입니다.");
 
 
 

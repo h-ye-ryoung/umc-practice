@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import lombok.Getter;
+import umc.study.validation.annotation.ExistChallengingMission;
 import umc.study.validation.annotation.ExistStores;
 
 import java.time.LocalDate;
@@ -22,5 +23,16 @@ public class MissionRequestDTO {
         @NotNull
         private Long ownerNumber;
     }
+
+    @Getter
+    public static class ChallengeDTO {
+
+        @NotNull
+        private Long missionId;
+
+        @ExistChallengingMission
+        private Long userMissionId;
+    }
 }
+
 

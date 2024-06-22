@@ -19,6 +19,6 @@ public class UserPoint extends BaseEntity {
         private Long current_point;
 
         @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "user_id")
+        @JoinColumn(name = "userId")
         private User user;
 }

@@ -16,17 +16,17 @@ import umc.study.domain.enums.MissionStatus;
 public class UserMission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_mission_id;
+    private Long userMissionId;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'IN_PROGRESS'")
     private MissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mission_id")
+    @JoinColumn(name = "missionId")
     private Mission mission;
 }

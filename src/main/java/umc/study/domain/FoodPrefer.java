@@ -23,7 +23,7 @@ public class FoodPrefer extends BaseEntity {
     private String prefer_name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
 }

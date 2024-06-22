@@ -23,7 +23,7 @@ public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //JPA가 통신을 하는 DBMS의 방식을 따른다
-    private Long user_id;
+    private Long userId;
 
     @Column(nullable = false, length = 10)
     private String username;

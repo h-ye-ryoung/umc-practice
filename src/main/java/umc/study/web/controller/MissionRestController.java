@@ -8,6 +8,7 @@ import umc.study.converter.MissionConverter;
 import umc.study.converter.ReviewConverter;
 import umc.study.domain.Mission;
 import umc.study.domain.Review;
+import umc.study.domain.mapping.UserMission;
 import umc.study.service.MissionService.MissionCommandService;
 import umc.study.service.ReviewService.ReviewCommandService;
 import umc.study.validation.annotation.ExistStores;
@@ -28,4 +29,13 @@ public class MissionRestController {
         Mission mission = missionCommandService.joinMission(request);
         return ApiResponse.onSuccess(MissionConverter.toJoinResultDTO(mission));
     }
+
+    @PostMapping("/missions/challenge")
+    public ApiResponse<MissionResponseDTO.ChallengeResultDTO> challenge(@RequestBody @Valid MissionRequestDTO.ChallengeDTO request) {
+        UserMission userMission = missionCommandService.challengeMission(request);
+        return ApiResponse.onSuccess(MissionConverter.toChallengeResultDTO(userMission));
+    }
+
 }
+
+

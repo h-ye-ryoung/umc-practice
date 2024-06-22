@@ -17,7 +17,7 @@ public class UserSignupAgree extends BaseEntity {
     private Long user_signup_agree_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -23,7 +23,7 @@ import java.util.List;
 public class Mission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mission_id;
+    private Long missionId;
 
     private Integer point_reward;
 

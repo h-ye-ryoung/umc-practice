@@ -4,6 +4,7 @@ import umc.study.domain.Mission;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
 import umc.study.domain.User;
+import umc.study.domain.mapping.UserMission;
 import umc.study.web.dto.MissionRequestDTO;
 import umc.study.web.dto.MissionResponseDTO;
 import umc.study.web.dto.ReviewRequestDTO;
@@ -25,8 +26,19 @@ public class MissionConverter {
 
     public static MissionResponseDTO.JoinResultDTO toJoinResultDTO(Mission mission){
         return MissionResponseDTO.JoinResultDTO.builder()
-                .missionId(mission.getMission_id())
+                .missionId(mission.getMissionId())
                 .createdAt(LocalDateTime.now())
                 .build();
     }
+
+    public static MissionResponseDTO.ChallengeResultDTO toChallengeResultDTO(UserMission userMission) {
+        return MissionResponseDTO.ChallengeResultDTO.builder()
+                .userMissionId(userMission.getUserMissionId())
+                .userId(userMission.getUser().getUserId())
+                .missionId(userMission.getMission().getMissionId())
+                .status(userMission.getStatus())
+                .build();
+    }
+
+
 }
