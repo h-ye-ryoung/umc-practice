@@ -4,35 +4,28 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import umc.study.apiPayload.code.status.ErrorStatus;
 import umc.study.repository.UserMissionRepository;
 import umc.study.validation.annotation.ExistChallengingMission;
+import umc.study.web.dto.MissionRequestDTO.ChallengeDTO;
 
 @Component
 @RequiredArgsConstructor
-public class ChallengingMissionValidator implements ConstraintValidator<ExistChallengingMission, Long> {
+public class ChallengingMissionValidator implements ConstraintValidator<ExistChallengingMission, ChallengeDTO> {
 
     private final UserMissionRepository userMissionRepository;
+
 
     @Override
     public void initialize(ExistChallengingMission constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
-
-
-    private Long hardCodeUserId = 1L; // 하드 코딩된 유저 ID
     @Override
-    public boolean isValid(Long userMissionId, ConstraintValidatorContext context) {
-        boolean isValid = userMissionRepository.existsByUserMissionId(userMissionId);
+    public boolean isValid(ChallengeDTO request, ConstraintValidatorContext context) {
+        Long userId = request.getUserId();
+        Long missionId = request.getMissionId();
 
-        if (!isValid) {
-            context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_ALREADY_IN_PROGRESS.toString()).addConstraintViolation();
-        }
-
-        return isValid;
-
+        return !userMissionRepository.existsByUserUserIdAndMissionMissionId(userId, missionId);
     }
-
 }
+

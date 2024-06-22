@@ -20,7 +20,7 @@ public class UserRestController {
 
     private final UserCommandService userCommandService;
 
-    @PostMapping("/")
+    @PostMapping
     public ApiResponse<UserResponseDTO.JoinResultDTO> join(@RequestBody @Valid UserRequestDTO.JoinDto request){
         User user = userCommandService.joinuser(request);
         return ApiResponse.onSuccess(UserConverter.toJoinResultDTO(user));

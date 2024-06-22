@@ -23,10 +23,10 @@ public class UserMission extends BaseEntity {
     private MissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "missionId")
+    @JoinColumn(name = "mission_id")
     private Mission mission;
 }

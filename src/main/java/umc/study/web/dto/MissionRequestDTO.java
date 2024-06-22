@@ -24,14 +24,14 @@ public class MissionRequestDTO {
         private Long ownerNumber;
     }
 
+    @ExistChallengingMission
     @Getter
     public static class ChallengeDTO {
 
         @NotNull
+        private Long userId;
+        @NotNull
         private Long missionId;
-
-        @ExistChallengingMission
-        private Long userMissionId;
     }
 }
 
