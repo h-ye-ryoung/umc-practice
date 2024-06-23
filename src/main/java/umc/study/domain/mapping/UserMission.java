@@ -16,7 +16,7 @@ import umc.study.domain.enums.MissionStatus;
 public class UserMission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_mission_id;
+    private Long userMissionId;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'IN_PROGRESS'")

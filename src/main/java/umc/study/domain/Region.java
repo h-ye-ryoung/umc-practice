@@ -2,6 +2,8 @@ package umc.study.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.mapping.UserMission;
 
@@ -9,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
