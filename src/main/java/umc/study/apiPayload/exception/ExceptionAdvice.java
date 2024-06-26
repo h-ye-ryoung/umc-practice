@@ -35,7 +35,8 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("ConstraintViolationException 추출 도중 에러 발생"));
 
-        return handleExceptionInternalConstraint(e, ErrorStatus.valueOf(errorMessage), HttpHeaders.EMPTY,request);
+        ApiResponse<Object> body = ApiResponse.onFailure("COMMON400", errorMessage, null);
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
 
