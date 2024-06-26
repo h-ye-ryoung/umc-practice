@@ -65,4 +65,18 @@ public class MissionConverter {
                 .build();
     }
 
+    public static MissionResponseDTO.MissionPreViewListDTO userMissionPreViewListDTO(Page<UserMission> userMissionPage) {
+        List<MissionResponseDTO.MissionPreViewDTO> missionPreViewDTOList = userMissionPage.stream()
+                .map(userMission -> missionPreViewDTO(userMission.getMission())).collect(Collectors.toList());
+
+        return MissionResponseDTO.MissionPreViewListDTO.builder()
+                .isLast(userMissionPage.isLast())
+                .isFirst(userMissionPage.isFirst())
+                .totalPage(userMissionPage.getTotalPages())
+                .totalElements(userMissionPage.getTotalElements())
+                .listSize(missionPreViewDTOList.size())
+                .missionList(missionPreViewDTOList)
+                .build();
+    }
+
 }

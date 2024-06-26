@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import umc.study.domain.Mission;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
+import umc.study.domain.mapping.UserMission;
 
 import java.util.Optional;
 
@@ -12,4 +13,6 @@ public interface StoreQueryService {
     Page<Review> getReviewList(Long StoreId, Integer page);
     Page<Review> getUserReviewList(Long userId, Integer page);
     Page<Mission> getStoreMissionList(Long storeId, Integer page);
+
+    Page<UserMission> getUserInProgressMissions(Long userId, Integer page);
 }

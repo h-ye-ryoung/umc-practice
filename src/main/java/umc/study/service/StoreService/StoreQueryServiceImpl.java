@@ -11,10 +11,9 @@ import umc.study.domain.Mission;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
 import umc.study.domain.User;
-import umc.study.repository.MissionRepository;
-import umc.study.repository.ReviewRepository;
-import umc.study.repository.StoreRepository;
-import umc.study.repository.UserRepository;
+import umc.study.domain.enums.MissionStatus;
+import umc.study.domain.mapping.UserMission;
+import umc.study.repository.*;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -27,6 +26,7 @@ public class StoreQueryServiceImpl implements StoreQueryService {
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;
     private final MissionRepository missionRepository;
+    private final UserMissionRepository userMissionRepository;
     private static final Logger logger = LoggerFactory.getLogger(StoreQueryServiceImpl.class);
 
     @Override
@@ -61,6 +61,19 @@ public class StoreQueryServiceImpl implements StoreQueryService {
 
         return StorePage;
     }
+
+    @Override
+    public Page<UserMission> getUserInProgressMissions(Long userId, Integer page) {
+
+        User user = userRepository.findById(userId).get();
+
+        Page<UserMission> userMissionPage = userMissionRepository
+                .findAllByUserAndStatus(user, MissionStatus.IN_PROGRESS, PageRequest.of(page, 10));
+
+        return userMissionPage;
+    }
+
+
 
 
 }
