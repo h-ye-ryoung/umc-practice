@@ -9,6 +9,10 @@ import umc.study.web.dto.MissionRequestDTO;
 import umc.study.web.dto.MissionResponseDTO;
 import umc.study.web.dto.ReviewRequestDTO;
 import umc.study.web.dto.ReviewResponseDTO;
+import org.springframework.data.domain.Page;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 import java.time.LocalDateTime;
 
@@ -37,6 +41,41 @@ public class MissionConverter {
                 .userId(userMission.getUser().getUserId())
                 .missionId(userMission.getMission().getMissionId())
                 .status(userMission.getStatus())
+                .build();
+    }
+
+    public static MissionResponseDTO.MissionPreViewDTO missionPreViewDTO(Mission mission) {
+        return MissionResponseDTO.MissionPreViewDTO.builder()
+                .description(mission.getMission_description())
+                .createdAt(mission.getCreatedAt().toLocalDate())
+                .build();
+    }
+
+    public static MissionResponseDTO.MissionPreViewListDTO missionPreViewListDTO(Page<Mission> missionPage) {
+        List<MissionResponseDTO.MissionPreViewDTO> missionPreViewDTOList = missionPage.stream()
+                .map(MissionConverter::missionPreViewDTO).collect(Collectors.toList());
+
+        return MissionResponseDTO.MissionPreViewListDTO.builder()
+                .isLast(missionPage.isLast())
+                .isFirst(missionPage.isFirst())
+                .totalPage(missionPage.getTotalPages())
+                .totalElements(missionPage.getTotalElements())
+                .listSize(missionPreViewDTOList.size())
+                .missionList(missionPreViewDTOList)
+                .build();
+    }
+
+    public static MissionResponseDTO.MissionPreViewListDTO userMissionPreViewListDTO(Page<UserMission> userMissionPage) {
+        List<MissionResponseDTO.MissionPreViewDTO> missionPreViewDTOList = userMissionPage.stream()
+                .map(userMission -> missionPreViewDTO(userMission.getMission())).collect(Collectors.toList());
+
+        return MissionResponseDTO.MissionPreViewListDTO.builder()
+                .isLast(userMissionPage.isLast())
+                .isFirst(userMissionPage.isFirst())
+                .totalPage(userMissionPage.getTotalPages())
+                .totalElements(userMissionPage.getTotalElements())
+                .listSize(missionPreViewDTOList.size())
+                .missionList(missionPreViewDTOList)
                 .build();
     }
 

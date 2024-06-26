@@ -19,4 +19,5 @@ public class StoreRequestDTO {
         String description;
         Float Score;
     }
+
 }
