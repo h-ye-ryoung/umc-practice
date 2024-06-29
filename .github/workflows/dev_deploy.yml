@@ -54,8 +54,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACTION_ACCESS_KEY_ID }} # 깃허브 환경변수에 추가 (AWS에서 IAM 사용자에 액세스 키 생성 후 복사)
           aws_secret_key: ${{ secrets.AWS_ACTION_SECRET_ACCESS_KEY }} # 깃허브 환경변수에 추가
-          application_name: project-dev
-          environment_name: Project-dev-env
+          application_name: umc-dev
+          environment_name: Umc-dev-env
           version_label: github-action-${{ steps.current-time.outputs.formattedTime }}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
