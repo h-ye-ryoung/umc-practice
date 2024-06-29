@@ -4,6 +4,13 @@ spring:
     username: hyeryoung27
     password: abcd1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet: # 추가
+    multipart:
+      enabled: true
+      maxFileSize: 100MB
+      maxRequestSize: 200MB
+
   sql:
     init:
       mode: never
